@@ -1,0 +1,104 @@
+<ion-card class="with-margin">
+  <ion-card-header class="width100">
+    <ion-card-title class="width100" class="question ion-text-wrap">
+      {{ question.frage }}
+    </ion-card-title>
+  </ion-card-header>
+  <ion-item class="width100">
+    <ion-radio-group
+      [(ngModel)]="selectedAnswer"
+      (ionChange)="checkAnswer($event)"
+    >
+      <ion-radio value="a" class="radioItem">
+        <ion-text
+          class="ion-text-wrap"
+          [color]="
+            answergiven && 'a' === question.richtig
+              ? 'success'
+              : answergiven &&
+                'a' !== question.richtig &&
+                selectedAnswer === 'a'
+              ? 'danger'
+              : 'initial'
+          "
+        >
+          {{ question.a }}
+        </ion-text> </ion-radio
+      ><br />
+      <ion-radio value="b" class="radioItem">
+        <ion-text
+          class="ion-text-wrap"
+          [color]="
+            answergiven && 'b' === question.richtig
+              ? 'success'
+              : answergiven &&
+                'b' !== question.richtig &&
+                selectedAnswer === 'b'
+              ? 'danger'
+              : 'initial'
+          "
+        >
+          {{ question.b }}
+        </ion-text></ion-radio
+      ><br />
+      <ion-radio value="c" class="radioItem">
+        <ion-text
+          class="ion-text-wrap"
+          [color]="
+            answergiven && 'c' === question.richtig
+              ? 'success'
+              : answergiven &&
+                'c' !== question.richtig &&
+                selectedAnswer === 'c'
+              ? 'danger'
+              : 'initial'
+          "
+        >
+          {{ question.c }}
+        </ion-text></ion-radio
+      ><br />
+      <ion-radio value="d" class="radioItem">
+        <ion-text
+          class="ion-text-wrap"
+          class="ion-text-wrap"
+          [color]="
+            answergiven && 'd' === question.richtig
+              ? 'success'
+              : answergiven &&
+                'd' !== question.richtig &&
+                selectedAnswer === 'd'
+              ? 'danger'
+              : 'initial'
+          "
+        >
+          {{ question.d }}
+        </ion-text></ion-radio
+      >
+      <ion-radio value="e" class="radioItem">
+        <ion-text
+          class="ion-text-wrap"
+          [color]="
+            answergiven && 'e' === question.richtig
+              ? 'success'
+              : answergiven &&
+                'e' !== question.richtig &&
+                selectedAnswer === 'e'
+              ? 'danger'
+              : 'initial'
+          "
+        >
+          {{ question.e }}
+        </ion-text></ion-radio
+      >
+    </ion-radio-group>
+  </ion-item>
+  <ion-row class="ion-justify-content-center answerRow">
+    <ion-button (click)="check()"> Check Answer </ion-button>
+  </ion-row>
+
+  <ion-row class="ion-justify-content-center">
+    <ion-text *ngIf="answergiven">{{
+      "correctAnswer:" + question.richtig
+    }}</ion-text>
+  </ion-row>
+</ion-card>

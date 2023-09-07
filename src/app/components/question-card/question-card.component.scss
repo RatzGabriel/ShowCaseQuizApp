@@ -1,0 +1,21 @@
+.with-margin {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.question {
+  font-size: 1.3rem;
+}
+
+.radioItem {
+  border-radius: 5px;
+  border: 1px solid var(--ion-color-primary);
+  margin-bottom: 10px;
+  padding: 0px 15px;
+  font-weight: bold;
+  white-space: normal;
+}
+
+.answerRow {
+  margin: 15px 0;
+}

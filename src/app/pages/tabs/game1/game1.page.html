@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="'/'"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="4"> Game 1 </ion-col>
+        <ion-col size="8">
+          <ion-item>
+            <h5 class="ion-text-uppercase">{{currentCategorie}}</h5>
+            <ion-badge slot="end"
+              >{{currentCategorie==='movies'?questionNrMovies:questionNrTvShows}}</ion-badge
+            >
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-justify-content-around">
+      <ion-col size="5">
+        <img
+          [src]="banners[0]?.banner"
+          (click)="changeCategorie('movies',$event.target)"
+        />
+      </ion-col>
+      <ion-col size="5">
+        <img
+          [src]="banners[1]?.banner"
+          (click)="changeCategorie('tvShows',$event.target)"
+        />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list>
+    <app-question-card
+      *ngIf="currentCategorie==='movies'"
+      [question]="fragenUndAntworten.movies[questionNrMovies]"
+    ></app-question-card>
+    <app-question-card
+      *ngIf="currentCategorie==='tvShows'"
+      [question]="fragenUndAntworten.tvShows[
+        questionNrTvShows]"
+    ></app-question-card>
+  </ion-list>
+  <ion-row class="ion-justify-content-center">
+    <ion-buttons>
+      <ion-button (click)="questionSwitch(-1)">
+        <ion-icon size="large" name="arrow-back"></ion-icon>
+      </ion-button>
+      <ion-button (click)="questionSwitch(1)">
+        <ion-icon size="large" name="arrow-forward" slot="end"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-row>
+</ion-content>
